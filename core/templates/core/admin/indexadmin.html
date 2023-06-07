@@ -1,0 +1,69 @@
+
+{% extends "core/admin/layoutadmin.html" %}
+
+{% block content %}
+
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h1 class="h2">Bienvenido {{user.username}}</h1>
+  
+    </div>
+    <center>
+      <caption>
+        <h4>Lista de Gatos en la BASE DE DATOS</h4>
+      </caption>
+    </center>
+    <a href="{% url 'save_gato' %}" class="btn btn-danger">Registra Gato</a>
+    <a href="{% url 'index' %}" class="btn btn-primary">Volver</a>
+    <table class="table">
+      <tr>
+        <th>Nombre</th>
+        <th>Genero</th>
+        <th>Comuna</th>
+        <th>Edad</th>
+        <th>Acción</th>
+      </tr>
+      {% for p in gato %}
+      <tr>
+        <td>{{p.nombre}}</td>
+        <td>{{p.genero}}</td>
+        <td>{{p.comuna}}</td>
+        <td>{{p.edad}}</td>
+        <td>
+          <a href="{% url 'form_modgato' p.nombre %}" class="btn btn-primary">Modificar</a>
+          <a href="{% url 'delete_gato' p.nombre %}" class="btn btn-danger">Eliminar</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+    <center>
+      <caption>
+        <h4>Lista de Perros en la BASE DE DATOS</h4>
+      </caption>
+    </center>
+    <a href="{% url 'save_perro' %}" class="btn btn-danger">Registra Perro</a>
+    <a href="{% url 'index' %}" class="btn btn-primary">Volver</a>
+    <table class="table">
+      <tr>
+        <th>Nombre</th>
+        <th>Genero</th>
+        <th>Comuna</th>
+        <th>Edad</th>
+        <th>Acción</th>
+      </tr>
+      {% for p in perro %}
+      <tr>
+        <td>{{p.nombre}}</td>
+        <td>{{p.genero}}</td>
+        <td>{{p.comuna}}</td>
+        <td>{{p.edad}}</td>
+        <td>
+          <a href="{% url 'form_modperro' p.nombre %}" class="btn btn-primary">Modificar</a>
+          <a href="{% url 'delete_perro' p.nombre %}" class="btn btn-danger">Eliminar</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+</main>
+
+{% endblock %}
